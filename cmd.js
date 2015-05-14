@@ -17,34 +17,26 @@ var peer = new Peer({
     trickle: false
 });
 
-if (argv._[0]) {
-    var intro = /^{/.test(argv._[0])
-        ? JSON.parse(argv._[0])
-        : JSON.parse(Buffer(argv._[0], 'base64'))
+var sp = split();
+sp.pipe(through(function (buf, enc, next) {
+    var line = buf.toString('utf8');
+    var intro = /^{/.test(line)
+        ? JSON.parse(line)
+        : JSON.parse(Buffer(line, 'base64'))
     ;
     peer.signal(intro);
-}
-else {
-    var sp = split();
-    sp.pipe(through(function (buf, enc, next) {
-        var line = buf.toString('utf8');
-        var intro = /^{/.test(line)
-            ? JSON.parse(line)
-            : JSON.parse(Buffer(line, 'base64'))
-        ;
-        peer.signal(intro);
-        process.stdin.unpipe(sp);
-        process.stdin.pipe(peer).pipe(process.stdout);
-    }));
-    process.stdin.pipe(sp);
-}
+    process.stdin.unpipe(sp);
+    process.stdin.pipe(peer).pipe(process.stdout);
+}));
+process.stdin.pipe(sp);
 
 peer.once('signal', function (signal) {
     var ref = Buffer(JSON.stringify(signal)).toString('base64');
     if (argv.execute) {
-        var ps = exec(argv.execute + ' ' + ref);
+        var ps = exec(argv.execute);
         ps.stdout.pipe(process.stdout);
         ps.stderr.pipe(process.stderr);
+        ps.stdin.end(ref);
     }
     else {
         console.log(ref);
