@@ -21,6 +21,14 @@ After the introductions, stdin is forwarded to the remote connection and data
 from the remote connection goes to stdout.
 ```
 
+# install
+
+With [npm](https://npmjs.org), to get the `rtcat` command do:
+
+```
+npm install -g rtcat
+```
+
 # license
 
 MIT
