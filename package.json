@@ -1,0 +1,28 @@
+{
+  "name": "rtcat",
+  "version": "1.0.0",
+  "description": "webrtc netcat",
+  "main": "cmd.js",
+  "dependencies": {
+    "minimist": "^1.1.1",
+    "simple-peer": "^4.2.3",
+    "split2": "^0.2.1",
+    "through2": "^0.6.5",
+    "wrtc": "^0.0.55"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/rtcat.git"
+  },
+  "keywords": [
+    "netcat",
+    "webrtc",
+    "command"
+  ],
+  "author": "substack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/substack/rtcat/issues"
+  },
+  "homepage": "https://github.com/substack/rtcat#readme"
+}
