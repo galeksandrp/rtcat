@@ -2,7 +2,9 @@
   "name": "rtcat",
   "version": "1.0.0",
   "description": "webrtc netcat",
-  "main": "cmd.js",
+  "bin": {
+    "rtcat": "cmd.js"
+  },
   "dependencies": {
     "minimist": "^1.1.1",
     "simple-peer": "^4.2.3",
