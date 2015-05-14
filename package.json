@@ -1,6 +1,6 @@
 {
   "name": "rtcat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webrtc netcat",
   "bin": {
     "rtcat": "cmd.js"
