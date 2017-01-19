@@ -10,7 +10,7 @@
     "simple-peer": "^4.2.3",
     "split2": "^0.2.1",
     "through2": "^0.6.5",
-    "wrtc": "^0.0.61"
+    "wrtc": "^0.0.59"
   },
   "repository": {
     "type": "git",
